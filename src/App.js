@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import TituloComponente from './componentes/TituloComponente';
+import TablaComponente from './componentes/TablaComponente';
+import SubirArchivo from "./componentes/SubirArchivo/SubirArchivo";
+import Loader from './componentes/Loader';
 
 function App() {
+  
+  const [cargaDatos, setCargaDatos] = useState(false);
+  const [tablaDatos, setTablaDatos] = useState(true);
+  const [Data, setData] = useState([]);
+  const [estadoLoader, setEstadoLoader] = useState(false);
+
+  const uploadDone = (state, datos) =>{
+    setEstadoLoader(state);
+    setData(datos);
+    setCargaDatos(true);
+    setTablaDatos(false);
+    setEstadoLoader(false);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Loader active={estadoLoader}/>
+      <TituloComponente titulo="Prueba Crud"/>
+      {
+        cargaDatos && <TablaComponente data={Data}/>
+      }
+      {
+        tablaDatos && <SubirArchivo successUpload={uploadDone}/>
+      }
     </div>
   );
 }
