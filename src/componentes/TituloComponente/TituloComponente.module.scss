@@ -9,4 +9,13 @@
     padding: 10px;
     font-family:Arial, Helvetica, sans-serif;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.buttonUpload{
+    position: absolute;
+    right: 10%;
 }

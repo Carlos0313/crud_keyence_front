@@ -1,16 +1,20 @@
 import React  from "react";
-import styles from "./TablaComponente.module.scss"
 import Table from 'react-bootstrap/Table';
 import RegistroTabla from '../RegistroTabla'
 
 const TablaComponente = (props) =>{
-
-    const tr = () => (
-        props.data
-        .map((registro,llave) => 
-            <RegistroTabla registro={registro} key={llave}/>
+    const tr = () => {
+        return (
+            props.data
+            .map((registro) =>
+                <RegistroTabla key={registro._id} registro={registro} recargar={recargar} />
+            )
         )
-    )
+    }
+
+    const recargar = (status) =>{
+        props.recargar(status);
+    }
 
     return (
         <div className="container">

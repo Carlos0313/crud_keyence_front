@@ -16,7 +16,7 @@
         width: 7px;
         height: 7px;
         border-radius: 50%;
-        background: #444;
+        background: #eee;
         margin: -4px 0 0 -4px;
     }
 
@@ -94,7 +94,7 @@
     height: 100%;
     left: 0px;
     top: 0px;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.6);
   }
   .div_loader{
     position: absolute;
@@ -104,8 +104,8 @@
     bottom: 0;
     width: 200px;
     height: 130px;
-    background-color: #fff;
-    color: #444;
+    background-color: transparent;
+    color: #eee;
     margin: auto;
     text-align: center;
     padding: 4px;

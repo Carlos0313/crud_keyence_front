@@ -26,9 +26,9 @@ const SubirArchivo = (props) =>{
                 const data = XLSX.utils.sheet_to_csv(ws, { header: 1 });
                 //Conversion de datos a JSON
                 let json = csvAjson(data);
-                console.log(json);
+
                 //Mandamos los datos al Back
-                props.successUpload(true, json);
+                props.dataUpload(json);
             };
             reader.readAsBinaryString(file);
         }
@@ -43,7 +43,7 @@ const SubirArchivo = (props) =>{
             headers.push(headers_[i].toLowerCase().replace(" ", "_"));
         }
 
-        for (let i = 1; i < array.length - 1; i++) {
+        for (let i = 1; i <= array.length - 1; i++) {
             let obj = {}
            
             let str = array[i]
@@ -54,7 +54,7 @@ const SubirArchivo = (props) =>{
               if (ch === '"' && flag === 0) {
                 flag = 1
               }
-              else if (ch === '"' && flag == 1) flag = 0
+              else if (ch === '"' && flag === 1) flag = 0
               if (ch === ',' && flag === 0) ch = '|'
               if (ch !== '"') s += ch
             }
